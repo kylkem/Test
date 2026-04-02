@@ -4,6 +4,7 @@ import BillsManager from './components/BillsManager'
 import BudgetDashboard from './components/BudgetDashboard'
 import RetirementPlanner from './components/RetirementPlanner'
 import SavingsGoals from './components/SavingsGoals'
+import InstallBanner from './components/InstallBanner'
 
 const TABS = [
   { id: 'paystub',    label: 'Paystub',        icon: '📄' },
@@ -88,6 +89,8 @@ export default function App() {
           </button>
         ))}
       </nav>
+
+      <InstallBanner />
 
       <main className="app-content">
         {activeTab === 'paystub' && (

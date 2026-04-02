@@ -2,8 +2,49 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- PWA / installability -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#1e3a5f" />
+
+    <!-- Standard icons -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+
+    <!-- Apple / iPad specific -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="BudgetWise" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
+
+    <!-- iPad splash screens (portrait) -->
+    <!-- iPad Pro 12.9" -->
+    <link rel="apple-touch-startup-image"
+      href="/splash/apple-splash-2048-2732.png"
+      media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <!-- iPad Pro 11" / iPad Air 10.9" -->
+    <link rel="apple-touch-startup-image"
+      href="/splash/apple-splash-1668-2388.png"
+      media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <!-- iPad Air / iPad mini 8.3" -->
+    <link rel="apple-touch-startup-image"
+      href="/splash/apple-splash-1620-2160.png"
+      media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <!-- iPad 10th gen 10.9" -->
+    <link rel="apple-touch-startup-image"
+      href="/splash/apple-splash-1640-2360.png"
+      media="(device-width: 820px) and (device-height: 1180px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <!-- iPad mini 6th gen 8.3" -->
+    <link rel="apple-touch-startup-image"
+      href="/splash/apple-splash-1488-2266.png"
+      media="(device-width: 744px) and (device-height: 1133px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+
+    <!-- SEO / description -->
+    <meta name="description" content="Personal budget analysis, savings goals, and retirement planning — works offline." />
+    <meta name="application-name" content="BudgetWise" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
     <title>BudgetWise — Financial Planning App</title>
   </head>
   <body>

@@ -2,6 +2,19 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* Prevent text size inflation on orientation change (iOS) */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Prevent blue tap highlights on iOS */
+a, button, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth momentum scrolling on iOS */
+.app-content, .modal-body, [data-scroll] {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 :root {
@@ -465,3 +478,109 @@ input[type="range"] {
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
+
+/* ── iPad / Touch optimizations ─────────────────────────────────────── */
+
+/* Safe area insets (notch / home indicator on newer iPads) */
+.app-header {
+  padding-top: max(20px, env(safe-area-inset-top));
+  padding-left: max(32px, env(safe-area-inset-left));
+  padding-right: max(32px, env(safe-area-inset-right));
+}
+
+.app-content {
+  padding-left: max(28px, env(safe-area-inset-left));
+  padding-right: max(28px, env(safe-area-inset-right));
+  padding-bottom: max(32px, env(safe-area-inset-bottom));
+}
+
+.app-nav {
+  padding-left: max(32px, env(safe-area-inset-left));
+  padding-right: max(32px, env(safe-area-inset-right));
+}
+
+/* Minimum 44px touch targets (Apple HIG) */
+.btn, .nav-tab, .inner-tab {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.btn-sm {
+  min-height: 36px;
+}
+
+.btn-icon {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Larger form inputs on touch */
+@media (pointer: coarse) {
+  .form-input {
+    padding: 12px 14px;
+    font-size: 16px; /* prevents iOS zoom on focus */
+    min-height: 48px;
+  }
+
+  .form-input-prefix span {
+    font-size: 16px;
+  }
+
+  .data-table td, .data-table th {
+    padding: 14px 16px;
+  }
+
+  /* Bigger range sliders */
+  input[type="range"] {
+    height: 32px;
+  }
+
+  /* Checkboxes easier to tap */
+  input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+  }
+
+  .upload-zone {
+    padding: 56px 24px;
+  }
+
+  .nav-tab {
+    padding: 16px 18px;
+    font-size: 15px;
+  }
+}
+
+/* iPad landscape: use wider sidebar-style layout for nav */
+@media (min-width: 768px) and (max-width: 1180px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* iPad portrait: single column grids */
+@media (max-width: 767px) {
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .app-header h1 { font-size: 22px; }
+  .section-title  { font-size: 19px; }
+  .metric-value   { font-size: 22px; }
+}
+
+/* Standalone PWA: hide browser chrome artifacts */
+@media (display-mode: standalone) {
+  body {
+    user-select: none; /* prevent accidental text selection while scrolling */
+  }
+
+  /* Allow selection inside inputs and content areas */
+  input, textarea, [contenteditable], .data-table, .insight-card, .card {
+    user-select: text;
+  }
+}
